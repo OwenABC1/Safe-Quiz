@@ -1,42 +1,37 @@
 [
 	{
-		"Question": "Question 1",
-		"BarSize": "width: 20%",
+		"Question": "What is the only bird that can fly backwards?",
+		"BarSize": "width: 0%",
 		"NextPage":  "/p2",
-		"Answers": ["1","2","3"],
-		"Correct":"1",
+		"Answers": ["Albatross","Hummingbirds","Blue Jay"],
 		"RenderPage": "/p1"
 	},
 	{
-		"Question": "Question 2",
-		"BarSize": "width: 40%",
+		"Question": "What was the largest contiguous empire in history?",
+		"BarSize": "width: 20%",
 		"NextPage":  "/p3",
-		"Answers": ["1","2","3"],
-		"Correct":"1",
+		"Answers": ["The Mongol Empire","The United Kingdom","The Roman Empire"],
 		"RenderPage": "/p2"
 	},
 	{
-		"Question": "Question 3",
-		"BarSize": "width: 60%",
+		"Question": "What was the greatest cause of death in the American Civil War?",
+		"BarSize": "width: 40%",
 		"NextPage":  "/p4",
-		"Answers": ["1","2","3"],
-		"Correct":"1",
+		"Answers": ["Bloodloss","Disease","Gunshot Wounds"],
 		"RenderPage": "/p3"
 	},
 	{
-		"Question": "Question 4",
-		"BarSize": "width: 80%",
+		"Question": "Who painted the Mona Lisa?",
+		"BarSize": "width: 60%",
 		"NextPage":  "/p5",
-		"Answers": ["1","2","3"],
-		"Correct":"1",
+		"Answers": ["Vincent van gogh","Leonardo deCaprio","Leonardo da Vinci"],
 		"RenderPage": "/p4"
 	},
 	{
-		"Question": "Question 5",
-		"BarSize": "width: 100%",
-		"NextPage":  "/End",
-		"Answers": ["1","2","3"],
-		"Correct":"1",
+		"Question": "Who was the first televised US President?",
+		"BarSize": "width: 80%",
+		"NextPage":  "/end",
+		"Answers": ["Franklin D. Roosevelt","John F. Kennedy","Herbert Hoover"],
 		"RenderPage": "/p5"
 	}
 ]
