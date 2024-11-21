@@ -1,9 +1,10 @@
 from flask import Flask, request, render_template, flash, redirect, session, url_for
 from markupsafe import Markup
-
+from timeit import default_timer as timer
 
 import os
 import json
+import time
 
 app = Flask(__name__)
 
@@ -15,6 +16,7 @@ def render_main():
 
 @app.route("/p1", methods=['GET','POST'])
 def render_p1():
+    session["Start"] = time.time()
     session["questionNumber"] = 0
     session["usersAnswersArray"] = []
     
@@ -29,10 +31,9 @@ def render_p1():
 def render_p2():
     session["questionNumber"] = 1
     if "answer" in request.form:
-        if len(session["usersAnswersArray"]) == 1:
+        print(session["usersAnswersArray"])
+        if len(session["usersAnswersArray"]) == 0:
             session["usersAnswersArray"].append(request.form["answer"])
-        else:
-            session["usersAnswersArray"].append("N/A")
     else:
         session["usersAnswersArray"].append("N/A")
     with open("static/Quiz.json") as data:
@@ -46,10 +47,8 @@ def render_p2():
 def render_p3():
     session["questionNumber"] = 2
     if "answer" in request.form:
-        if len(session["usersAnswersArray"]) == 2:
+        if len(session["usersAnswersArray"]) == 1:
             session["usersAnswersArray"].append(request.form["answer"])
-        else:
-            session["usersAnswersArray"].append("N/A")
     else:
         session["usersAnswersArray"].append("N/A")
     with open("static/Quiz.json") as data:
@@ -63,10 +62,8 @@ def render_p3():
 def render_p4():
     session["questionNumber"] = 3
     if "answer" in request.form: 
-        if len(session["usersAnswersArray"]) == 3:
+        if len(session["usersAnswersArray"]) == 2:
             session["usersAnswersArray"].append(request.form["answer"])
-        else:
-            session["usersAnswersArray"].append("N/A")
     else:
         session["usersAnswersArray"].append("N/A")
     with open("static/Quiz.json") as data:
@@ -80,10 +77,8 @@ def render_p4():
 def render_p5():
     session["questionNumber"] = 4
     if "answer" in request.form:
-        if len(session["usersAnswersArray"]) == 4:
+        if len(session["usersAnswersArray"]) == 3:
             session["usersAnswersArray"].append(request.form["answer"])
-        else:
-            session["usersAnswersArray"].append("N/A")
     else:
         session["usersAnswersArray"].append("N/A")
     with open("static/Quiz.json") as data:
@@ -98,11 +93,14 @@ def render_p5():
 
 @app.route("/end", methods=['GET','POST'])
 def render_end():
+    session["end"] = time.time()
+    Time = session["end"] - session["Start"]
+    timeE = round(Time, 0)
+    print(Time)
+    
     if "answer" in request.form:
-        if len(session["usersAnswersArray"]) == 5:
+        if len(session["usersAnswersArray"]) == 4:
             session["usersAnswersArray"].append(request.form["answer"])
-        else:
-            session["usersAnswersArray"].append("N/A")
     else:
         session["usersAnswersArray"].append("N/A")
         
@@ -122,7 +120,7 @@ def render_end():
         Score = Score + 1
     print(session)
     session.clear()
-    return render_template('End.html', Score=Score)
+    return render_template('End.html', Score=Score, Tfinal=timeE)
     
 @app.route("/Restart")
 def render_Restart():
